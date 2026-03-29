@@ -1,8 +1,7 @@
 cask "sniptext" do
-  version "1.0"
-  sha256 "d2ffe7c803c436868e794d3c30065957dcbb4ca2187b688aa16ae864f28e2b7f"
-
-  url "https://github.com/khduy/SnipText/releases/download/v#{version}/SnipText-#{version}.zip"
+  version "1.0.1"
+  sha256 "7a487ab2b0e3d006af669e707a070341248c8a4c95fb011b7565d591d9377489"
+  url "https://github.com/khduy/SnipText/releases/download/v1.0.1/SnipText.zip"
   name "SnipText"
   desc "Capture screen regions and copy extracted text"
   homepage "https://github.com/khduy/SnipText"
