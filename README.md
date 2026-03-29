@@ -6,5 +6,4 @@ Third-party Homebrew tap for apps published by khduy.
 
 ```bash
 brew tap khduy/tap
-brew install --cask sniptext
 ```
