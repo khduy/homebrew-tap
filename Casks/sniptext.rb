@@ -1,6 +1,6 @@
 cask "sniptext" do
-  version "0.1.0"
-  sha256 "44dd9d4b5615f0195df309211d21e8891f9166a29311a83522eea9eec0a6d025"
+  version "0.1.1"
+  sha256 "623eb757e2b0a2dd4ac123857eb7f1198e3a0a5607f79cb49d83e5ed448113bf"
 
   url "https://github.com/khduy/snip-text/releases/download/v#{version}/SnipText-#{version}.zip"
   name "SnipText"
