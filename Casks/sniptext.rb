@@ -1,24 +1,36 @@
 cask "sniptext" do
-  version "1.0"
-  sha256 "b3650a1befd7e8a479cf4ec8fc8456b16d7eb70c19e765d7f4836c4c6432afcd"
-  url "https://github.com/khduy/SnipText/releases/download/v1.0/SnipText.zip"
-  name "SnipText"
-  desc "Capture screen regions and copy extracted text"
-  homepage "https://github.com/khduy/SnipText"
+  version "0.1.0"
+  sha256 "44dd9d4b5615f0195df309211d21e8891f9166a29311a83522eea9eec0a6d025"
 
-  depends_on arch: :arm64
+  url "https://github.com/khduy/snip-text/releases/download/v#{version}/SnipText-#{version}.zip"
+  name "SnipText"
+  desc "Menu bar OCR: select a screen region and copy its text"
+  homepage "https://github.com/khduy/snip-text"
+
+  depends_on macos: ">= :sequoia"
 
   app "SnipText.app"
 
+  # The app is not notarized; drop the quarantine flag so Gatekeeper does not block it.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/SnipText.app"]
+  end
+
+  uninstall quit: "io.github.khduy.sniptext"
+
   zap trash: [
     "~/Library/Application Support/SnipText",
-    "~/Library/Preferences/com.khduy.SnipText.plist",
+    "~/Library/Caches/SnipText",
+    "~/Library/Caches/io.github.khduy.sniptext",
+    "~/Library/Preferences/io.github.khduy.sniptext.plist",
   ]
 
   caveats <<~EOS
-    SnipText is currently unsigned.
-    If macOS blocks it on first launch, run:
+    SnipText needs Screen Recording permission. After enabling it in
+    System Settings → Privacy & Security, restart SnipText.
 
-      xattr -cr /Applications/SnipText.app
+    If macOS still blocks the app on first launch, run:
+      xattr -dr com.apple.quarantine #{appdir}/SnipText.app
   EOS
 end
