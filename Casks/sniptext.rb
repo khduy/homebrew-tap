@@ -7,7 +7,7 @@ cask "sniptext" do
   desc "Menu bar OCR: select a screen region and copy its text"
   homepage "https://github.com/khduy/snip-text"
 
-  depends_on macos: ">= :sequoia"
+  depends_on macos: :sequoia
 
   app "SnipText.app"
 
